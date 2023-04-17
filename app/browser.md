@@ -74,3 +74,25 @@ control 等)
 9. 其它 ( 可以拓展不同的知识模块， 如跨域，web安全， hybrid 模式等等内容)
 
 > [从输入 URL 到页面展示到底发生了什么？看完吊打面试官！](https://zhuanlan.zhihu.com/p/133906695)
+
+# 浏览器内核
+主要分成两部分:渲染引擎( layout engineer 或 Rendering Engine )和 JS 引擎
+渲染引擎:负责取得网页的内容 ( HTML 、 XML 、图像等等) 、整理讯息 (例如加入
+CSS 等)， 以及计算网页的显示方式，然后会输出至显示器或打印机 。浏览器的内核的不 同对于网页的语法解释会有不同，所以渲染的效果也不相同 。所有网页浏览器 、电子邮件 客户端以及其它需要编辑 、显示网络内容的应用程序都需要内核
+JS 引擎则:解析和执行 javascript 来实现网页的动态效果
+最开始渲染引擎和 JS 引擎并没有区分的很明确，后来JS引擎越来越独立， 内核就倾向于只指渲染引擎
+
+# cookies ， sessionStorage 和 localStorage 的区别?
+- cookie 是网站为了标示用户身份而储存在用户本地终端 ( Client Side)上的数据 ( 通常
+经过加密)
+- cookie数据始终在同源的http请求中携带 ( 即使不需要)， 即会在浏览器和服务器间来回传递。
+sessionStorage 和 localStorage 不会自动把数据发给服务器，仅在本地保存 
+- 存储大小:
+    - cookie 数据大小不能超过4k
+    - sessionStorage 和 localStorage 虽然也有存储大小的限制，但比 cookie 大得 多， 可以达到5M或更大
+- 有效期:
+    - localStorage 存储持久数据， 浏览器关闭后数据不丢失除非主动删除数据
+    - sessionStorage 数据在当前浏览器窗口关闭后自动删除
+    - cookie 设置的 cookie 过期时间之前一直有效， 即使窗口或浏览器关闭
+
+> [sessionStorage 、localStorage 和 cookie 之间的区别](https://juejin.cn/post/6844903713098694664)

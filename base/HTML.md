@@ -21,3 +21,39 @@
 # \<img\> 的 title 和 alt 有什么区别 
 - title: 通常当鼠标滑动到元素上的时候显示
 - alt 是\<img\>的特有属性， 是图片内容的等价描述，用于图片无法加载时显示 、读屏器阅读图片 。可提g高图片可访问性， 除了纯装饰图片外都必须设置有意义的值， 搜索引擎会重点分析。
+
+# HTML5
+- 增加新特性：
+    - 绘画 canvas
+    - 用于媒介回放的 video 和 audio 元素
+    - 本地离线存储 localStorage 长期存储数据， 浏览器关闭后数据不丢失 sessionStorage 的数据在浏览器关闭后自动删除
+    - 语意化更好的内容元素， 比如 article 、 footer 、 header 、 nav 、 section 表单控件， calendar 、 date 、 time 、 email 、 url 、 search
+    - 新的技术 webworker 、 websocket 、 Geolocation 
+- 移除的元素:
+    - 纯表现的元素: basefont、 big、 center、 font、 s、 strike、 tt、u 
+    - 对可用性产生负面影响的元素: frame 、 frameset 、 noframes
+
+> [HTML5](https://www.runoob.com/html/html5-intro.html)
+
+# HTML5离线缓存
+> [HTML5-离线缓存（Application Cache）](https://juejin.cn/post/6844903590062997517)
+
+# iframe有那些缺点?
+- iframe 会阻塞主⻚面的 Onload 事件
+- 搜索引擎的检索程序无法解读这种⻚面，不利于 SEO
+iframe 和主⻚面共享连接池， 而浏览器对相同域的连接有限制，所以会影响⻚面的并行 加载
+- 使用 iframe 之前需要考虑这两个缺点 。如果需要使用 iframe ， 最好是通过 javascript 动态给 iframe 添加 src 属性值， 这样可以绕开以上两个问题
+
+# DOCTYPE
+doctype是一种标准通用标记语言的文档类型声明，目的是告诉标准通用标记语言解析器要使用什么样的文档类型定义（DTD）来解析文档。
+
+> [doctype的作用](https://zhuanlan.zhihu.com/p/32609899)
+
+# 行内元素有哪些?块级元素有哪些? 空(void)元素有那些?行内元素和块级元素有什么区别?
+- 行内元素有: a b span img input select strong
+- 块级元素有: div ul ol li dl dt dd h1 h2 h3 h4... p 
+- 空元素: \<br\> \<hr\> \<img\> \<input\> \<link\> \<meta\> 
+- 行内元素不可以设置宽高，不独占一行 
+- 块级元素可以设置宽高， 独占一行
+
+> [HTML 元素类型](https://zhuanlan.zhihu.com/p/97755100)

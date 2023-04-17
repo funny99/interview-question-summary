@@ -25,3 +25,32 @@ HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方
 > [OPTIONS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/OPTIONS)
 
 > [常见的HTTP Method深度解析](https://segmentfault.com/a/1190000013182974)
+
+# http状态码
+- 1**：信息，服务器收到请求，需要请求者继续执行操作
+    - 100：[Continue] 继续，客户端应继续其请求
+    - 101：[Switching Protocols] 切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议
+- 2**：成功，操作被成功接收并处理
+    - 200：[OK] 请求成功，一般用于GET与POST请求
+    - 201：[Created] 已创建。成功请求并创建了新的资源
+    - 202：[Accepted] 已接受。已经接受请求，但未处理完成
+    - 203：[Non-Authoritative Information] 非授权信息。
+    请求成功。但返回的meta信息不在原始的服务器，而是一个副本
+    - 204：[No Content] 无内容。服务器处理成功，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档。
+- 3**：重定向，需要进一步的操作以完成请求
+    - 301：[Moved Permanently] 永久移动。请求的资源已被永久的移动到新的URI，返回信息会包括新的URI，浏览器会自动定向到新的URI。今后任何新的请求都应使用新的URI代替
+    - 302：[Found] 临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI
+    - 304：[Not Modified] 未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息支出客户端希望只返回在指定日期之后修改的资源
+- 4**：客户端错误，服务器在处理请求的过程中发生了错误
+    - 400：[Bad Request] 客户端请求的语法错误，服务器无法理解
+    - 401：[Unauthorized] 请求要求用户的身份认证
+    - 403：[Forbidden] 服务器理解请求客户端的请求，但是拒绝执行此请求
+    - 404：[Not Found] 服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置“您所请求的资源无法找到”的个性页面
+- 5**：服务器错误，服务器在处理请求的过程中发生了错误
+    - 500：[Internal Server Error] 服务器内部错误，无法完成请求
+    - 501：[Not Implemented] 服务器不支持请求的功能，无法完成请求
+    - 502： [Bad Gateway] 作为网关或代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应
+    - 503： [Service Unavailable] 由于超载或系统维护，服务器暂时的无法处理客户端的请求，延时的长度可包含在服务器的Retry-After头信息中
+    - 504：[Gateway Time-out] 充当网关或代理的服务器，未及时从远端服务器获取请求
+
+> [HTTP 状态码](https://www.runoob.com/http/http-status-codes.html)
