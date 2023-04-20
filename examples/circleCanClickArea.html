@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现圆形的可点击区域</title>
+    <style>
+        .c1 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: aqua;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+            border: 2px solid #ccc;
+        }
+
+        /* 用于标识圆形点击区 */
+        .circle-area {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: yellow;
+        }
+
+        /* 通过map+area */
+        .bookItem {
+        width: 250px;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: #CC9933;
+        }
+
+        .bookItem * {
+        margin: 0;
+        padding: 0;
+        }
+
+        .bookInfo {
+        margin-left: 10px;
+        }
+
+        .bookTitle {
+        position: relative;
+        }
+
+        /* 通过设置area的position为absolute，我们可以对area进行css样式的设置 */
+        .bookTitleArea {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        }
+
+        .bookDetail {
+        margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="c c1">c1</div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="c c2">
+        <circle cx="100" cy="50" r="40" stroke="black"
+        stroke-width="2" fill="red"/>
+    </svg>
+
+    <div class="c3" id="box">
+        <div class="circle-area"></div>
+    </div>
+
+    <img src="./imgs/test.jpeg" width="200" border="0" usemap="#Map" />
+    <map name="Map" id="Map">
+        <area shape="circle" coords="100,100,100" href="http://www.baidu.com" target="_blank" />
+    </map>
+
+    <div>
+        <h2>test2</h2>
+        <!-- 对整个小说项赋予链接 -->
+        <a class="bookItem" href="https://read.qidian.com/chapter/XOn-GdKVmQjywypLIF-xfQ2/rTEHu3PW9WiaGfXRMrUjdw2" target="_blank">
+            <!-- 单独给封面赋予点击区域 -->
+            <img width="90" height="120px" src="./imgs/novel.jpeg" class="book-cover" alt="绝对虚构" usemap="#bookCover">
+            <map name="bookCover" id="bookCover">
+                <area shape="rect" coords="0, 0, 90, 120" href="https://book.qidian.com/info/1013049039#Catalog" alt="绝对虚构" target="_blank">
+            </map>
+            <div class="bookInfo">
+                <!-- 给小说名赋予点击区域 -->
+                <h4 class="bookTitle">
+                    <area class="bookTitleArea" href="https://book.qidian.com/info/1013049039#Catalog" target="_blank">
+                    绝对领域
+                </h4>
+                <p class="bookDetail">第十章 欢迎来到我的世界</p>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        [...document.querySelectorAll('.c')].forEach(item => {
+            item.addEventListener('click', () => {
+                alert('点击了圆形区域');
+            });
+        });
+
+        // 获取目标元素
+        var box = document.getElementById('box');
+
+        // 对目标元素target的圆形区域进行一个点击事件绑定
+        function bindClickOnCircleArea(target, callback) {
+            target.onclick = function (e) {
+                e = e || window.event;
+
+                // target中心点的坐标
+                var x1 = 100;
+                var y1 = 100;
+
+                // 事件源坐标
+                var x2 = e.offsetX;
+                var y2 = e.offsetY;
+                console.log('x2, y2: ', x2, y2);
+
+                // 校验是否在圆形点击区，在的话就执行callback回调
+                // 计算事件触发点与target中心的位置
+                var len = Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
+                // 通过半径进行校验
+                if (len <= 100) {
+                    callback();
+                } else {
+                    alert('死鬼，跑哪去啊，你老婆我是黄皮肤还是白皮肤都分不清了吗');
+                }
+            }
+        }
+
+        // 执行
+        bindClickOnCircleArea(box, function () {
+            alert('老婆，你让我好找啊，呜呜呜');
+        });
+    </script>
+</body>
+</html>

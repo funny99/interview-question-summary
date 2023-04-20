@@ -57,3 +57,32 @@ doctype是一种标准通用标记语言的文档类型声明，目的是告诉�
 - 块级元素可以设置宽高， 独占一行
 
 > [HTML 元素类型](https://zhuanlan.zhihu.com/p/97755100)
+
+# HTML全局属性(global attribute)有哪些
+全局属性是所有 HTML 元素共有的属性；它们可以用于所有元素，即使属性可能对某些元素不起作用。
+- class :为元素设置类标识 
+- data-* : 为元素增加自定义属性 
+- draggable : 设置元素是否可拖拽 
+- id : 元素 id ，文档内唯一
+- lang : 元素内容的的语言
+- style : 行内 css 样式
+- title : 元素相关的建议信息
+
+>[全局属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes)
+
+# Canvas和SVG有什么区别?
+- svg 绘制出来的每一个图形的元素都是独立的 DOM 节点， 能够方便的绑定事件或用来修 改。 canvas输出的是一整幅画布
+- svg 输出的图形是矢量图形，后期可以修改参数来自由放大缩小，不会失真和锯齿 。而
+canvas 输出标量画布，就像一张图片一样，放大会失真或者锯齿
+
+# HTML5 为什么只需要写 \<!DOCTYPE HTML\>
+- HTML5 不基于 SGML ， 因此不需要对 DTD 进行引用，但是需要 doctype 来规范浏览器 的行为
+- 而 HTML4.01 基于 SGML ,所以需要对 DTD 进行引用， 才能告知浏览器文档所使用的文档 类型
+
+# 如何在页面上实现一个圆形的可点击区域?
+- svg
+- border-radius
+- 纯 js 实现 需要求一个点在不在圆上简单算法 、获取鼠标坐标等等
+- 通过map加area
+
+> [如何在页面上实现一个圆形的可点击区域](https://zhuanlan.zhihu.com/p/48168812)
